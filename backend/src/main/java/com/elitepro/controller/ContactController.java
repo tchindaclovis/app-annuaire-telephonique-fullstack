@@ -58,8 +58,9 @@ public class ContactController {
         c.setUtilisateur(owner);
 
         Contact created = contactService.create(c);
-        return ResponseEntity.created(URI.create("/api/contacts/" + created.getId())).body(created);/*on retourne
-        une reponse de l'utilisateur crée avec l'url de la ressource créée*/
+        return ResponseEntity.created(URI.create("/api/contacts/" + created.getId())).body(created);/*on
+        retourne une reponse de l'utilisateur crée avec l'url de la ressource créée et incluant l'objet
+        complet dans la reponse*/
     }
 
     @PutMapping("/{id}") // spring reconnait l'id comme une variable dans l'url @RequestMapping

@@ -1,6 +1,5 @@
 package com.elitepro.controller;
 
-import com.elitepro.model.Contact;
 import com.elitepro.model.Utilisateur;
 import com.elitepro.service.UtilisateurService;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,6 @@ public class UtilisateurController {
                 .orElse(ResponseEntity.notFound().build()); // si l'utilisateur n'existe pas on renvoie une erreur 404 notFound
     }
 
-
     @PostMapping //on attend une requête http post avec un corps json
     public ResponseEntity<Utilisateur> create(@RequestBody Utilisateur utilisateur) throws IllegalAccessException {
         Utilisateur created = utilisateurService.create(utilisateur);
@@ -38,7 +36,5 @@ public class UtilisateurController {
         return ResponseEntity.created(URI.create("/api/utilisateurs/" + created.getId())).body(created); /*on renvoi
         le code http 201(created), on précise l'url de l'utilisateur créé et inclu l'objet complet dans la reponse*/
     }
-
-
 
 }
